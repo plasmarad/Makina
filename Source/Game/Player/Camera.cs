@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using FlaxEngine;
 
 namespace Game;
@@ -26,7 +26,7 @@ public class Camera : Script
         MouseX += Input.GetAxis("Mouse X") * CameraXSpeed * Time.DeltaTime;
         MouseY += Input.GetAxis("Mouse Y") * CameraYSpeed * Time.DeltaTime;
         
-        MouseX = Math.Clamp(MouseX, -90, 90);
+        MouseY = Math.Clamp(MouseY, -90, 90);
         
         //! ONLY FOR TESTING
         if ( Input.GetKey( KeyboardKeys.Escape ) ) {
@@ -35,8 +35,8 @@ public class Camera : Script
             Screen.CursorVisible    = !_isLocked                                                ;
         }
         
-        Player.LocalOrientation = Quaternion.Euler(0, MouseY, 0);
-        CameraActor.EulerAngles = new Vector3 (MouseX,Player.LocalEulerAngles.Y, 0);
+        Player.LocalOrientation = Quaternion.Euler(0, MouseX, 0);
+        CameraActor.EulerAngles = new Vector3 (MouseY,Player.LocalEulerAngles.Y, 0);
     
     }
 }
